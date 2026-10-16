@@ -52,7 +52,7 @@
           <section class="image-panel" aria-labelledby="image-title">
             <div class="section-heading">
               <div>
-                <p class="step-label">02 <span>·</span> MARK THE BORDERS</p>
+                <p class="step-label">02 <span>·</span> REVIEW THE GUIDES</p>
                 <h2 id="image-title">Set your card guides</h2>
               </div>
               <label class="upload-button" for="image-upload">
@@ -71,6 +71,16 @@
               </div>
             </div>
 
+            <div class="image-controls" aria-label="Image zoom controls">
+              <span class="zoom-label">ZOOM</span>
+              <button class="zoom-button" id="zoom-out" type="button" aria-label="Zoom out" disabled>−</button>
+              <span id="zoom-level" aria-live="polite">100%</span>
+              <button class="zoom-button" id="zoom-in" type="button" aria-label="Zoom in" disabled>＋</button>
+              <button class="zoom-reset" id="zoom-reset" type="button" disabled>Fit image</button>
+              <button class="zoom-reset" id="pan-toggle" type="button" aria-pressed="false" disabled>Pan image</button>
+              <span class="pan-help">At higher zoom, hold <kbd>Shift</kbd> and drag, or toggle Pan image.</span>
+            </div>
+
             <div class="guide-tools">
               <div class="guide-selectors" role="group" aria-label="Guide to edit">
                 <button class="guide-button selected" type="button" data-guide="card" aria-pressed="true">
@@ -84,7 +94,7 @@
               </div>
               <button class="reset-button" id="reset-guides" type="button" disabled>Reset guides</button>
             </div>
-            <p class="canvas-help" id="canvas-help">Drag a rectangle around the card’s outer edges.</p>
+            <p class="canvas-help" id="canvas-help">Guides are auto-detected. Confirm them or redraw either guide; zoom in for fine adjustments.</p>
           </section>
 
           <aside class="results-panel" aria-labelledby="results-title">
@@ -139,7 +149,7 @@
         </div>
         <div>
           <span class="how-number">2</span>
-          <p><strong>Mark both rectangles</strong><br />Trace the card edge, then the border or print edge.</p>
+          <p><strong>Confirm or adjust guides</strong><br />Zoom in and redraw either outline if needed.</p>
         </div>
         <div>
           <span class="how-number">3</span>
@@ -168,6 +178,20 @@
         </div>
       </section>
     </main>
+
+    <dialog class="detection-dialog" id="detection-dialog" aria-labelledby="detection-title">
+      <div class="dialog-icon" aria-hidden="true">⌖</div>
+      <p class="eyebrow">AUTO-DETECTION COMPLETE</p>
+      <h2 id="detection-title">Are these guides accurate?</h2>
+      <p class="dialog-copy">
+        We’ve marked the card edges and estimated the printed area. Check both outlines against
+        your photo. If anything looks off, adjust the guides manually — zoom in for precision.
+      </p>
+      <div class="dialog-actions">
+        <button class="dialog-secondary" id="adjust-guides" type="button">No, adjust manually</button>
+        <button class="dialog-primary" id="confirm-guides" type="button">Yes, looks accurate</button>
+      </div>
+    </dialog>
 
     <footer>
       <span>CardGauge is a free, independent tool and is not affiliated with PSA, Beckett, CGC, SGC, or TAG.</span>
